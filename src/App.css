@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  display: block;
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: min(1000px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.header {
+  margin-top: 2rem;
+  margin-bottom: 6rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 1rem;
+}
+
+.header p {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.header a {
+  font-size: 12px;
+  color: hsl(257, 7%, 63%);
+  font-weight: bolder;
+  padding-top: 0.5rem;
+}
+.header :last-child {
+  background-color: hsl(180, 66%, 49%);
+  padding: 0.5rem 1rem;
+
   color: white;
+  border-radius: 17px;
 }
 
-.App-link {
-  color: #61dafb;
+.login {
+  margin-left: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.first {
+  display: grid;
+  grid-template-columns: 70% auto;
+  gap: 1rem;
+}
+
+.first-pic {
+  transform: translateX(6rem);
+  width: 1400px;
+}
+
+.first h1 {
+  font-weight:800;
+  font-size: 50px;
+}
+
+.first p {
+  font-size: 18px;
+  color: hsl(257, 7%, 63%);
+  margin-bottom: 1rem;
+}
+
+.first a {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-top: 3rem;
+  background-color: hsl(180, 66%, 49%);
+  font-size: 13px;
+  color: white;
+  font-weight: 700;
+}
+
+.midSection {
+  background: url('/public/bg-shorten-desktop.svg');
+  background-color: blueviolet;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  /* text-align: center;\ */
+  width:1000px;
+  margin-top: 5rem;
+  margin-left:8.75rem;
+  border-radius: 5px;
+}
+
+.midSection input{
+  padding: 0.5rem 15rem;
+  border-radius: 5px;
+}
+
+.midSection button{
+  border: none;
+  cursor: pointer;
+  color: aliceblue;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  font-weight: bolder;
+  background-color: hsl(180, 66%, 49%);
 }
