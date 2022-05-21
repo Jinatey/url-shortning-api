@@ -1,0 +1,39 @@
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .header {
+    justify-content: space-between;
+  }
+
+  .mobile-nav {
+    display: revert;
+    background-color: rgb(34, 34, 112);
+    width: calc(100% - 2rem);
+    padding: 2rem;
+    margin-inline: auto;
+    border-radius: 10px;
+  }
+
+  .mobile-nav a {
+    padding: 0.8rem;
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 1.25rem;
+  }
+
+  .mobile-nav .login {
+    padding-top: 2rem;
+    margin-top: 1.5rem;
+    border-top: rgb(187, 182, 182) 1px solid;
+  }
+
+  .mobile-nav a:last-child{
+border-radius: 50px;
+background-color: rgb(118, 189, 189);
+  }
+
+
+}

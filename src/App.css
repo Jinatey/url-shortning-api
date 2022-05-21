@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
 
+
+
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -47,7 +51,7 @@ a {
   color: hsl(257, 7%, 63%);
   font-weight: bolder;
 }
-.header :last-child {
+.header a:last-child {
   background-color: hsl(180, 66%, 49%);
   padding: 0.75rem 2rem;
 
@@ -436,7 +440,7 @@ a {
     left: revert;
     top: revert;
     background-color: rgb(41, 182, 195);
-    height: 72px;
+    height: 65px;
     transform: translate(-7px, -128px);
 
     width: 15px;
@@ -449,7 +453,7 @@ a {
     top: revert;
     transform: translate(-7px, 64px);
     background-color: rgb(57, 153, 156);
-    height: 72px;
+    height: 65px;
     width: 15px;
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 const FirstSection = () => {
   return (
     <div className='container'>

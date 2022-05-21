@@ -3,12 +3,15 @@ import './App.css';
 import FirstSection from './FirstSection';
 import Navbar from './Navbar';
 import SecondContainer from './SecondContainer';
+import './Navbar.css'
+
+
 
 function App() {
   return (
     <>
       <Navbar />
-      
+
       <FirstSection />
       <div className='App'>
         <div className='midSection'>
