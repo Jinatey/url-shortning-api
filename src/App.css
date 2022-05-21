@@ -224,9 +224,25 @@ a {
   background-color: rgb(245, 245, 245);
 
   padding: 1rem 1rem;
-  height: clamp(240px, 100vw, 300px);
+  height: clamp(260px, 18vw, 320px);
   border-radius: 5px;
 }
+
+@media (max-width: 1000px) {
+  .box1,
+  .box2,
+  .box3 {
+    height: 340px;
+  }
+}
+@media (min-width: 1500px) {
+  .box1,
+  .box2,
+  .box3 {
+    height: 250px;
+  }
+}
+
 .box2::after {
   content: '';
   position: absolute;
