@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import { useState } from 'react';
 import { FcMenu } from 'react-icons/fc';
 
 const Navbar = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <>
       <header className='header'>
@@ -10,22 +12,29 @@ const Navbar = () => {
         <a href='#'>Featured</a>
         <a href='#'>Pricing</a>
         <a href='#'>Resourses</a>
-        <FcMenu size={40} />
+        <FcMenu className='nav-icon'
+          size={40}
+          onClick={() => {
+            setShow(!show);
+          }}
+        />
         <a href='#' className='login'>
           Login
         </a>
         <a href='#'>Sign up</a>
       </header>
 
-      <nav className='mobile-nav'>
-        <a href='#'>Featured</a>
-        <a href='#'>Pricing</a>
-        <a href='#'>Resourses</a>
-        <a href='#' className='login'>
-          Login{' '}
-        </a>
-        <a href='#'>Sign up</a>
-      </nav>
+      {show && (
+        <nav className='mobile-nav'>
+          <a href='#'>Featured</a>
+          <a href='#'>Pricing</a>
+          <a href='#'>Resourses</a>
+          <a href='#' className='login'>
+            Login{' '}
+          </a>
+          <a href='#'>Sign up</a>
+        </nav>
+      )}
     </>
   );
 };
