@@ -10,6 +10,7 @@ const SecondContainer = () => {
     { name: 'https://www.frontendmentor.io', shortLink: 'htpps//.bluee' },
   ]);
   const [text, setText] = useState('');
+  const [error, setError] = useState('');
 
   return (
     <>
@@ -21,22 +22,38 @@ const SecondContainer = () => {
               onChange={(e) => setText(e.target.value)}
               type='text'
               placeholder='Short a link here...'
+              className={error ? 'input-error' : ''}
             />
             <button
-            onClick={()=>{
-if(!text) {
-  alert('please add a link')
-  return;
-}
+              onClick={(e) => {
+                if (!text) {
+                  setError('please add a link');
+                  setTimeout(() => {
+                    setError('');
+                  }, 2000);
+                  return;
+                }
 
-const updatedLinks=[...links, {
-  name: text
-}]
-setLinks(updatedLinks)
-setText('');
-
-            }}
-            >shorten It!</button>
+                fetch(`https://api.shrtco.de/v2/shorten?url=${text}`)
+                  .then((res) => {
+                    return res.json();
+                  })
+                  .then((data) => {
+                    const updatedLinks = [
+                      ...links,
+                      {
+                        name: text,
+                        shortLink: data.result.full_short_link2,
+                      },
+                    ];
+                    setLinks(updatedLinks);
+                    setText('');
+                  });
+              }}
+            >
+              shorten It!
+            </button>
+            {error ? <p className='error'>{error}</p> : null}
           </div>
         </div>
       </div>
@@ -53,9 +70,25 @@ setText('');
             <div className='link-div'>
               {links.map((li, index) => (
                 <div key={li.name + index} className='link-wrap'>
-                  <p>{li.name}</p>
+                  <p className='pf'>{li.name}</p>
                   <p>{li.shortLink}</p>
-                  <button>Copyi</button>
+                  <button
+                    onClick={(e) => {
+                      navigator.clipboard.writeText(
+                        e.target.parentElement.querySelector('p:nth-child(2)')
+                          .textContent
+                      );
+
+                      e.target.textContent = 'copied';
+                      e.target.style.backgroundColor = 'rgb(11, 11, 65)';
+                      setTimeout(() => {
+                        e.target.textContent = 'copy';
+                        e.target.style.backgroundColor = ' hsl(180, 66%, 49%)';
+                      }, 2000);
+                    }}
+                  >
+                    Copy
+                  </button>
                 </div>
               ))}
             </div>
