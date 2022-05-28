@@ -1,16 +1,28 @@
 import { useState } from 'react';
 
+import LinkItem from './LinkItem';
+
 const SecondContainer = () => {
   const [links, setLinks] = useState([
-    { name: 'https://www.frontendmentor.io', shortLink: 'htpps//.red' },
+    {
+      name: 'https://www.frontendmentor.io',
+      shortLink: 'htpps//.red',
+    },
     {
       name: 'https://twotter.com/frontendmentor.io',
       shortLink: 'htpps//.red/green/n',
     },
-    { name: 'https://www.frontendmentor.io', shortLink: 'htpps//.bluee' },
+    {
+      name: 'https://www.jjscautrt.io',
+      shortLink: 'https://www.google.com',
+    },
   ]);
   const [text, setText] = useState('');
   const [error, setError] = useState('');
+
+  const delteTask = (name) => {
+    setLinks(links.filter((l) => l.name !== name));
+  };
 
   return (
     <>
@@ -35,9 +47,7 @@ const SecondContainer = () => {
                 }
 
                 fetch(`https://api.shrtco.de/v2/shorten?url=${text}`)
-                  .then((res) => {
-                    return res.json();
-                  })
+                  .then((res) => res.json())
                   .then((data) => {
                     const updatedLinks = [
                       ...links,
@@ -69,27 +79,13 @@ const SecondContainer = () => {
           <div className='headingtext'>
             <div className='link-div'>
               {links.map((li, index) => (
-                <div key={li.name + index} className='link-wrap'>
-                  <p className='pf'>{li.name}</p>
-                  <p>{li.shortLink}</p>
-                  <button
-                    onClick={(e) => {
-                      navigator.clipboard.writeText(
-                        e.target.parentElement.querySelector('p:nth-child(2)')
-                          .textContent
-                      );
-
-                      e.target.textContent = 'copied';
-                      e.target.style.backgroundColor = 'rgb(11, 11, 65)';
-                      setTimeout(() => {
-                        e.target.textContent = 'copy';
-                        e.target.style.backgroundColor = ' hsl(180, 66%, 49%)';
-                      }, 2000);
-                    }}
-                  >
-                    Copy
-                  </button>
-                </div>
+                <LinkItem
+                  links={links}
+                  setLinks={setLinks}
+                  key={li.name + index}
+                  li={li}
+                  delteTask={delteTask}
+                />
               ))}
             </div>
 
